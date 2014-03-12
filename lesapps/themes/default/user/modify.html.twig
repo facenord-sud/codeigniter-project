@@ -1,0 +1,6 @@
+{%extends "user/template/index.html.twig"%}
+{%block content%}
+<h3>Modifier {{user_info.username}}</h3>
+{{anchor('user', 'reset_password', 'Remettre le mot de passe à zéro', user_info.id)}}
+{{form.printForm}}
+{%endblock%}

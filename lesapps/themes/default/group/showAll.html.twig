@@ -1,0 +1,14 @@
+{%extends "group/template/index.html.twig"%}
+{%block content%}
+<h3>voir tous les groupes</h3>
+{%set groups = group_entity.get%}
+{%if groups|length==0%}
+<p>Il n'y a aucun groupe</p>
+{%else%}
+<ul>
+{%for group in groups%}
+        <li>{{anchor('group', 'show', group.name|e, [group.id, group.slug|e])}}</li>
+{%endfor%}
+        </ul>
+{%endif%}
+{%endblock%}

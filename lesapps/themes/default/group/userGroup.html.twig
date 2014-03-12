@@ -1,0 +1,11 @@
+{%extends "group/template/index.html.twig"%}
+{%block content%}
+<h3>Vos groupes </h3>
+<ul>
+{%for g in groups%}
+        <li>{{anchor('group', 'show', g.name|e, [g.id, g.slug|e])}}</li>
+{%else%}
+            <p>Vous n'appartenez à aucun groupe</p>
+{%endfor%}
+</ul>
+{%endblock%}

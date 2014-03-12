@@ -1,0 +1,8 @@
+{%extends "group/template/index.html.twig"%}
+{%block content%}
+<h3>{{create.h3_create_new_group}}</h3>
+{{form.printForm}}
+{%block javascript%}
+{{js('group/create_form.js')}}
+{%endblock%}
+{%endblock%}

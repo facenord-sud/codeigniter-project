@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{layout.lang}}" > <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+    {% block head %}
+    {{ meta }}
+    {% endblock %}
+
+    <title>{% block meta_title %}{{ title }}{% endblock %}</title>
+    {{css('normalize.css')}}
+    {{css('app.css')}}
+    {{css('style.css')}}
+
+    {{js('vendor/custom.modernizr.js')}}
+
+    {{js('vendor/jquery.js')}}
+    {{js('foundation/foundation.js')}}
+    {{js('foundation/foundation.alerts.js')}}   
+    {{js('foundation/foundation.clearing.js')}} 
+    {{js('foundation/foundation.cookie.js')}}   
+    {{js('foundation/foundation.dropdown.js')}} 
+    {{js('foundation/foundation.forms.js')}}
+    {{js('foundation/foundation.joyride.js')}}
+    {{js('foundation/foundation.magellan.js')}}
+    {{js('foundation/foundation.orbit.js')}}    
+    {{js('foundation/foundation.placeholder.js')}}
+    {{js('foundation/foundation.reveal.js')}}
+    {{js('foundation/foundation.section.js')}}
+    {{js('foundation/foundation.tooltips.js')}}
+    {{js('foundation/foundation.topbar.js')}}
+
+</head>
+<body>
+
+
+    <nav class="top-bar">
+        <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+                <h1><a href="{{find_url('main', 'index')}}">{{img('logo.jpg', 'navbar-img')}}ollaide</a></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section">
+            <!-- Left Nav Section -->
+            <ul class="left">
+                <li class="divider"></li>
+                <li class="">{{anchor('document','', 'Documents')}}</li>
+                <li class="divider"></li>
+                <li><a href="#">Annonces</a></li>
+            </ul>
+
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li class="has-dropdown">
+                    <a href="#">{{layout.choose_language}}</a>
+                    <ul class="dropdown">
+                        {%for language in languages%}
+                        <li>
+                            <a {{active}} href="{{translate_page(language.lang)}}">{{language.language}}</a>
+                        </li>
+                        {%endfor%}
+                    </ul>
+                </li>
+                {%if user%}
+<<<<<<< mine
+                <li>{{anchor('user', 'profil', user.username, user.id)}}</li>
+                <li class="divider"></li>
+                <li class="has-form">
+                    <a class="button" href="{{find_url('user', 'logout')}}">{{layout.logout}}</a>
+                </li>
+=======
+                        <li>{{anchor('user', 'profil', user.username|e, user.id)}}</li>
+                        <li class="divider"></li>
+                        <li class="has-form">
+                            <a class="button" href="{{find_url('user', 'logout')}}">{{layout.logout}}</a>
+                        </li>
+>>>>>>> theirs
+                {%else%}
+                <li>
+                    <a data-dropdown="signin" href="#">{{layout.link_connect}}</a>
+
+                </li>
+                <div id="signin" class="f-dropdown" data-dropdown-content>
+                    {{connect.printForm}}
+                </div>
+                <li class="divider"></li>
+                <li class="has-form">
+                    <a class="button success" href="{{find_url('user', 'register')}}">{{layout.link_new_inscr}}</a>
+                </li>
+                {%endif%}
+            </ul>
+        </section>
+    </nav>
+    <div class="row">
+        <div class="row">
+            <div class="large-10 large-centered columns">
+                {%if msg.info is not empty%}
+                <div data-alert class="alert-box radius">
+                    {{msg.info}}
+                    <a href="#" class="close">&times;</a>
+                </div>
+                {%endif%}
+                {%if msg.success is not empty%}
+                <div data-alert class="alert-box radius success">
+                    {{msg.success}}
+                    <a href="#" class="close">&times;</a>
+                </div>
+                {%endif%}
+                {%if msg.error is not empty%}
+                <div data-alert class="alert-box radius alert">
+                    {{msg.error}}
+                    <a href="#" class="close">&times;</a>
+                </div>
+                {%endif%}
+            </div>
+        </div>
+        {{usersession.flashget('msg_info')}}
+
+        <div class="large-10 push-2 columns">
+            {% block h1_title %} 
+            <h1>{{layout.h1_title}}</h1>
+            {% endblock %}
+            {% block breadcrumb %}
+            {{breadcrumb.getBreadcrumb}}
+            {% endblock %}
+
+                {% block content %} 
+
+                {% endblock %}
+
+        </div>
+        <div class="large-2 pull-10 columns">
+            <ul class="side-nav">
+                {%if user%}
+                {%if usersession.hasRole('admin') == true%}
+                <li class="active">Administration</li>
+                <ul class="side-nav">
+                    <li>{{anchor('user', 'index', layout.link_user)}}</li>
+                    <li>{{anchor('domain', 'index', layout.link_domain)}}</li>
+                    <li>{{anchor('role', 'index', layout.link_role)}}</li>
+                    <li>{{anchor('group', 'show_all', 'voir tous les groupes')}}</li>
+                    <li class="divider"></li>
+                    {%endif%}
+                    <li class="active">Compte</li>
+                    <li>{{anchor('group', 'create', 'créer un groupe')}}</li>
+                    <li>{{anchor('group', 'user_group', 'Vos groupes')}}</li>
+                    {%endif%}
+                </ul>
+            </div>
+
+        </div>
+                                <script>/*
+                                 document.write('<script src=' +
+                                 ('__proto__' in {} ? 'javascripts/vendor/zepto' : 'javascripts/vendor/jquery') +
+                                 '.js><\/script>')*/
+</script>
+<script>
+document.write('<script src={{base_url()}}' +
+    ('__proto__' in {} ? 'www/javascripts/vendor/zepto' : '/www/javascripts/vendor/jquery') +
+    '.js><\/script>')
+</script>
+<script>
+$(document).foundation();
+</script>
+
+</body>
+</html>

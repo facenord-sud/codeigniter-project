@@ -1,0 +1,14 @@
+{%extends _layout%}
+
+{% block content %}
+{{ parent() }}
+<p>{{template.description}}</p>
+
+
+    <dl class="sub-nav">
+  <dt>Gestion :</dt>
+  <dd class="active">{{anchor('document', 'add', 'ajouter un document')}}</dd>
+  <dd>modif</dd>
+  <dd>etc</dd>
+</dl>
+{% endblock %}

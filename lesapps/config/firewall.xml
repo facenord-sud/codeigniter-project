@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<firewall>
+    <bundles>
+        <bundle name="user" login="false">
+            <methods>
+                <method name="profil">
+                    <users>
+                        <user name="simple_member"/>
+                    </users>
+                </method>
+                <method name="modify">
+                    <users>
+                        <user name="admin"/>
+                    </users>
+                </method>
+                <method name="edit">
+                    <users>
+                        <user name="admin"/>
+                    </users>
+                </method>
+                <method name="editMail">
+                    <users>
+                        <user name="simple_member"/>
+                    </users>
+                </method>
+                <method name="editPassword">
+                    <users>
+                        <user name="simple_member"/>
+                    </users>
+                </method>
+                 <method name="contact">
+                    <users>
+                        <user name="simple_member"/>
+                    </users>
+                </method>
+                 <method name="close">
+                    <users>
+                        <user name="simple_member"/>
+                    </users>
+                </method>
+                <method name="address">
+                    <users>
+                        <user name="simple_member"/>
+                    </users>
+                </method>
+                <method name="test">
+                    <users>
+                        <user name="admin"/>
+                    </users>
+                </method>
+                <method name="delete">
+                    <users>
+                        <user name="admin"/>
+                    </users>
+                </method>
+                <method name="selectAll">
+                    <users>
+                        <user name="admin"/>
+                    </users>
+                </method>
+                <method name="genUser">
+                    <users>
+                        <user name="admin"/>
+                    </users>
+                </method>
+                <method name="resetPassword">
+                    <users>
+                        <user name="admin"/>
+                    </users>
+                </method>
+            </methods>
+        </bundle>
+        <bundle name="domain" login="true">
+            <users>
+                <user name="admin"/>
+            </users>
+        </bundle>
+        <bundle name="role" login="true">
+            <users>
+                <user name="admin"/>
+            </users>
+        </bundle>
+    </bundles>
+</firewall>

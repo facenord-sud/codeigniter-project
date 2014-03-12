@@ -1,0 +1,33 @@
+{%extends _layout%}
+
+{%block content%}
+<h3>{{show.title}}</h3>
+<form action="{{find_url('role', 'show')}}" method="POST">
+    {{show.choose_language}}{{form_dropdown('print_language',languages|e, select|e)}}
+        <button>{{show.show_role|e}}</button>
+    </form>
+{{pagination.create_links}}
+    <ul>
+{%for role in roles%}
+            <li>
+            {{anchor('role', 'modify', role.nick_name|e, [role.id, select|e])}}
+                    <ul>
+                        <li>{{show.id}}{{role.id|e}}</li>
+                        <li>{{show.nick_name}}{{role.nick_name|e}}</li>
+                        <li>{{show.name}}{{role.name|e}}</li>
+                        <li>{{show.description}}{{role.description|e}}</li>
+                    </ul>
+                    <form action="{{find_url('role', 'delete')}}/{{role.id|e}}">
+                        <button>{{show.delete}}</button>
+                    </form>
+                    <form action="{{find_url('role', 'traduce')}}/{{role.id|e}}" method="POST">
+                            {{show.traduce_label|e}}{{form_dropdown('print_language',languages|e, select|e)}}
+                            <button>{{show.traduce_submit}}</button>
+                        </form>
+                    </li>
+{%endfor%}
+                </ul>
+                <p>
+    {{form.printForm}}
+                    </p>
+{%endblock%}

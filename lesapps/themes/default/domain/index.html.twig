@@ -1,0 +1,9 @@
+{%extends "domain/template/index.html.twig"%}
+{% block content %}
+{{ parent() }}
+<h3>{{index.index}}</h3>
+{{pagination.create_links}}
+{{tableFetchAll(domains|e, fields|e, index.table_caption, index.table_summary)}}
+{{pagination.create_links}}
+{{content}}
+{% endblock %}

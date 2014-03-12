@@ -1,0 +1,15 @@
+{%extends _layout%}
+
+{% block content %}
+{{ parent() }}
+<p>{{template.description}}</p>
+
+
+    <dl class="sub-nav">
+  <dt>Gestion :</dt>
+  <dd>{{anchor('domain', 'index', template.sub_nav_index )}}</dd>
+  <dd>{{anchor('domain', 'create', template.sub_nav_create )}}</dd>
+  <dd>{{anchor('domain', 'delete', template.sub_nav_delete )}}</dd>
+</dl>
+
+{% endblock %}

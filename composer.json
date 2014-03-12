@@ -1,0 +1,14 @@
+{
+    "name": "vendor/collaide",
+    "description": "la version 2 de collaide",
+    "authors": [
+        {
+            "name": "Numa de Montmollin",
+            "email": "facenord.sud@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "2.2.*",
+        "symfony/class-loader": "2.*"
+    }
+}

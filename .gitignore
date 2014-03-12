@@ -1,0 +1,14 @@
+doc/
+log/
+composer.lock
+.DS_Store
+.hg/
+.hgcheck/
+.httpasswd
+.hgignore
+composer.lock
+nbproject/
+phpunit-skelgen.phar
+vpproject
+www/.saas-cache/
+www/uploads

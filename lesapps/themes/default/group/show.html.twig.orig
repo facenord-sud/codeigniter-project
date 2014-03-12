@@ -1,0 +1,74 @@
+<<<<<<< mine
+{% extends "group/template/index.html.twig" %}
+{% block content %}
+
+<h3>le groupe: {{group.name|e}}</h3>
+<h5>{{group.description|e}}</h5>
+{% if isLogIn %}
+    Vous faites parti de ce groupe {{anchor('group', 'log_off', 'quitter le groupe', [group.id, group.slug])}}
+    {{anchor('group', 'share', 'inviter des gens', [group.id, group.slug])}}
+    {{anchor('group', 'admin', 'administrer', [group.id, group.slug])}}
+
+=======
+{%extends "group/template/index.html.twig"%}
+{%block content%}
+<h3>le groupe: {{group.name|e}}</h3>
+<h5>{{group.description|e}}</h5>
+{%if isLogIn%}
+    Vous faites parti de ce groupe {{anchor('group', 'log_off', 'quitter le groupe', [group.id, group.slug|e])}}
+    {{anchor('group', 'share', 'inviter des gens', [group.id, group.slug|e])}}
+    {{anchor('group', 'admin', 'administrer', [group.id, group.slug|e])}}
+    
+>>>>>>> theirs
+    {{form.printForm}}
+    {% include "minimess/print_minimess.html.twig" %}
+    {% include "group/user_group.html.twig" %}
+    <h5>Personnes invitées: </h5>
+    <ul>
+        {%for invit in invitations%}            
+<<<<<<< mine
+        {%if invit.mail_invited==''%}
+        <li>{{invit.getUser.username|e}}</li>
+        {%else%}
+        <li>{{invit.mail_invited}}</li>
+        {%endif%}
+=======
+            {%if invit.mail_invited==''%}
+                <li>{{invit.getUser.username|e}}</li>
+            {%else%}
+                <li>{{invit.mail_invited|e}}</li>
+            {%endif%}
+>>>>>>> theirs
+        {%endfor%}
+    </ul>
+<<<<<<< mine
+{% else %}
+    {% if group.password=='' %}
+        <p>Ce groupe est public</p>
+        {{anchor('group', 'log_in', 'rejoindre', [group.id, group.slug])}}
+        {% include "group/user_group.html.twig" %}
+        {% elseif isInvited==true %}
+        {{anchor('group', 'log_in', 'rejoindre', [group.id, group.slug])}}
+    {% else %}
+        <p>Ce groupe est privé</p>
+        {{ form.printForm }}
+    {% endif %}
+    <p>On affiche d'autres infos sur le groupe</p>
+{% endif %}
+{% endblock %}
+=======
+{%else%}
+    {%if group.password==''%}
+    <p>Ce groupe est public</p>
+    {{anchor('group', 'log_in', 'rejoindre', [group.id, group.slug|e])}}
+    {%include "group/user_group.html.twig"%}
+    {%elseif isInvited==true%}
+        {{anchor('group', 'log_in', 'rejoindre', [group.id, group.slug|e])}}
+    {%else%}
+    <p>Ce groupe est privé</p>
+    {{form.printForm}}
+    {%endif%}
+<p>On affiche d'autres infos sur le groupe</p>
+{%endif%}
+{%endblock%}
+>>>>>>> theirs

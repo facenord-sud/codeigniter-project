@@ -1,0 +1,21 @@
+<ul>
+    <h5>Derniers messages</h5>
+	{%for msg in minimess%}
+    <li>
+		{{msg.text|e}}
+            </br>
+		{{msg.publish_at|date("jS F \\a\\t g:ia")}}
+        {%for reply in msg.Reply_as_minimess_mto%}
+            <ul>
+                <li>{{reply.text|e}}</li>
+            </ul>
+            {%else%}
+            <p>Soyez le premier à répondre</p>
+        {%endfor%}
+            {{form_l.open('').textarea('text', 'text').hidden('id', msg.id).submit('response').get()}}
+            {{form_l.clear()}}
+        </li>
+	{%else%}
+        <p>aucun message pour le moment</p>
+	{%endfor%}
+    </ul>

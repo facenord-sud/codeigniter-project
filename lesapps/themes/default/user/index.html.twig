@@ -1,0 +1,47 @@
+{%extends "user/template/index.html.twig"%}
+{%block content%}
+<h3>Gestion des utilisateurs. Un peu de JQuery ne ferait pas de mal, non?</h3>
+<form action="{{find_url('user', 'modify')}}" method="POST">
+    Modifier:  
+    {{form_dropdown('id_user',user_dropdown)}}
+    <button>Modifier</button>
+</form>
+<form action="{{find_url('user', 'delete')}}" method="POST">
+    Supprimer:  
+    {{form_dropdown('id_user',user_dropdown)}}
+    <button>Suprimer</button>
+</form>
+
+{{anchor('user', 'register', 'Nouvel utilisateur')}}
+<br/>
+{{pagination.create_links}}
+<br/>
+<label id="label-select" for="check">Tout sélectionner</label>
+<input type="checkbox" id="select" name="select" value="1"/>
+<form action="{{find_url('user', 'select_all')}}" method="POST">
+{{tableFetchAll(users, {cb: 'séléctionner', id: 'id', username: 'pseudo', email: 'email', date_creation: 'date de création', last_login: 'dernière connexion', enabled: 'confirmé', locked: 'bloqué', banned: 'bannis', points: 'points'}, 'Tous les utilisateurs', 'Tous les utilisateurs', 1)}}
+
+        <label for="action">Pour la séléction: </label>
+        <select name="action" id="action">
+            <option value="delete">Supprimer</option>
+            <option value="point">Gérer les points</option>
+            <option value="enable">Activer</option>
+            <option value="block">Bloquer</option>
+            <option value="lock">Loqué</option>
+        </select>
+        <div id="point-div">
+            <label id="label-addPoint" for="addPoint">Ajouter les points: <!-- ou si la case est décochée: donner les points --></label>
+            <input type="checkbox" id="addPoint" name="addPoint" value="1" checked="checked"/>
+            <input type="text" name="point"/>
+        </div>
+        <div id="check-div">
+            <label id="label-check" for="check">Activer <!-- ou bloquer ou loqué suivant le champ séléctionner du dropdown --></label>
+            <input type="checkbox" id="check" name="check" value="1"/>
+        </div>
+        <button type="submit">Exécuter</button>
+    </form>
+    <label id="label-select" for="check">Tout sélectionner</label>
+    <input type="checkbox" id="select" name="select" value="1"/>
+    <br/>
+{{pagination.create_links}}
+{%endblock%}

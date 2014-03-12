@@ -1,0 +1,7 @@
+{%extends "domain/template/index.html.twig"%}
+{% block content %}
+{{ parent() }}
+<h3>{{create.create}}</h3>
+{{form.printForm}}
+{{content}}
+{% endblock %}

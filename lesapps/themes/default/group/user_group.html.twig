@@ -1,0 +1,8 @@
+<ul>
+	<h5>Membres de ce groupe: </h5>
+	{%for member in group.getGroup_member%}
+	<li>{{member.getUser.username|e}}</li>
+	{%else%}
+	<p>Vous êtes le premier membre de ce groupe</p>
+	{%endfor%}
+</ul>

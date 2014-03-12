@@ -1,0 +1,30 @@
+{%extends "user/template/index.html.twig"%}
+{% block content %}
+<h1>{{profil.content}} {{contact.f_name}} {{contact.last_name}}</h1>
+<h2>{{anchor('user', 'edit_mail', 'Modifier l\'addresse email')}}</h2>
+<h2>{{anchor('user', 'edit_psw', 'Modifier mon mot de passe')}}</h2>
+<h2>{{anchor('user', 'contact', 'Me trouver facilement')}}</h2>
+<h2>{{anchor('user', 'close', 'Fermer mon compte(pas bien)')}}</h2>
+<h2>Vous avez: {{friends|length}} ami(s)</h2>
+<ul>{%for u in user_profil.getFriend.getUser%}
+    <li>{{u.username}}vous à demandé en ami</li>
+    {%else%}
+    {%endfor%}
+</ul>
+<h3>
+    <ul>
+        <li>{{profil.pseudo}}{{user_profil.username}}</li>
+        <li>{{profil.email}}{{user_profil.email}}</li>
+        <li>{{profil.date_creation}}{{user_profil.date_creation}}</li>
+        <li>{{profil.last_login}}{{user_profil.last_login}}</li>
+        <li>{{profil.points_first}}{{user_profil.points}}{%if user_profil.points>0%}{{profil.points_word}}{%else%} {{profil.point_word}}{%endif%}</li>
+        <li>{{profil.role}}</li>
+        <ul>
+        {%for role in roles%}
+                <li>{{role.name}}->{{role.description}}</li>
+        {%endfor%}
+        </ul>
+    </ul>
+</h3>
+ {{content}}
+{% endblock %}

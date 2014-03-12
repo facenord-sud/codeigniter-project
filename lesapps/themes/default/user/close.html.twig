@@ -1,0 +1,16 @@
+{%extends "user/template/index.html.twig"%}
+{%block content%}
+<h3>Fermer mon compte</h3>
+<p>Etes-vous sûr de fermer votre compte ?</p>
+<p>Vous n'aurez plus accès à votre compte et vous n'aparaîtrez plus sur Collaide. 
+Cepandant, les documents que vous avez mis, vos publication etc seront toujours là. Pour
+vraiment tout effacer, veuillez faire une demande écrite à: </p>
+<p>A tout moment, vous pourrez récupérer votre compte en suivant ce lien: <a href="#">...</a></p>
+<p>Fermer votre compte ?</p>
+<form action="" method="POST">
+    <button type="submit" name="yes" value="oui">oui</button>
+</form>
+<form action="" method="POST">
+    <button type="submit" name="no" value="non">NON</button>
+</form>
+{%endblock%}

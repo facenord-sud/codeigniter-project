@@ -1,0 +1,14 @@
+{%extends "user/template/index.html.twig"%}
+{%block content%}
+<h3>Modifier vos infos</h3>
+    {{form.printForm}}
+    {% if addresses is empty%}
+Vous n'avez aucune addresse {{anchor('user', 'address', 'Ajoutez-en une')}}
+    {%else%}
+<ul>
+        {%for address in addresses%}
+        <li>{{address.name}} {{address.country}} {{anchor('user', 'address', 'modifier', [address.id])}}</li>
+        {%endfor%}
+        </ul>
+    {%endif%}
+{%endblock%}
